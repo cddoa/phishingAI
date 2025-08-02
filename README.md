@@ -15,5 +15,6 @@ A fine-tuned LLaMA 3.2 model using Unsloth.ai to detect phishing messages
 - Format: "input": raw message, "output": "Phishing" or "Safe"
   
 ## Adding the model to Ollama
-- After installing Ollama run: ollama create phishingAI -f modelFile
+- Install the model here: https://huggingface.co/cddoan/phishingAI
+- After installing the model, the model file and Ollama run: ollama create phishingAI -f modelFile
 - Run the model through app.py 
