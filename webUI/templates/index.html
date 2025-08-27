@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <title>phishingAI</title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header">
+                <h1>phishingAI</h1>
+                <p>Phishing detection powered by AI</p>
+            </div>
+
+            <div class="form-group">
+                <label for="textInput">Enter text to analyze:</label>
+                <textarea
+                id = "textInput"
+                placeholder="Enter message contents">
+                </textarea>
+            </div>
+
+            <div class="button-group">
+                <button id="analyzeBtn" class="btn btn-primary">Analyze</button>
+                <button id="clearBtn" class="btn btn-secondary">Clear</button>
+            </div>
+
+            <div id="loading" class="loading">
+                <div class="spinner"></div>
+                <p>Analyzing with AI...</p>
+            </div>
+
+            <div id="result" class="result">
+                <div id="resultText"></div>
+                <div id="resultDetails" class="result-details"></div>
+            </div>
+
+
+
+            </div>
+    </div>
+    <script src="/static/js/scripts.js" defer></script>
+</body>
+</html>
