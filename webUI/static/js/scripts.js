@@ -28,7 +28,7 @@ async function analyzeText() {
     result.style.display = 'none';
     analyzeBtn.disabled = true;
 
-    try{ //post request to server
+    //try{ //post request to server
         const response = await fetch('/analyze',{
             method: 'POST',
             headers: {'Content-Type': 'application/json'},
@@ -36,40 +36,33 @@ async function analyzeText() {
         });
 
         const data = await response.json(); //response from model
-
-        if (data.error){ //if response has error jump to catch 
-            throw new Error(data.error);
-        }
+        console.log(data);
+       
 
         displayResult(data); //display results
-    }
-    catch (error){
-        console.error('Error:', error);
-        displayError(error.message);
-    } finally {
-        loading.style.display = 'none';
-        analyzeBtn.disabled = false;
-    }
+    
+         loading.style.display = 'none';
+         analyzeBtn.disabled = false;
 }
 
 function displayResult(data) { //displaying results
-    const response = data.result;
+    const classification = data.classification;
+    const explanation = data.explanation.replaceAll("Explanation:", "");
     let resultType, icon, display;
 
-    if (response == "Safe email"){
+    if (classification == "Label: Safe "){
         resultType = "Safe";
         icon = "✅";
         display = "Safe - No phishing detected";
     }
-    else if (response == "Phishing email"){
+    else if (classification == "Label: Phishing "){
         resultType = "Phishing";
         icon = "❌";
         display = "Not Safe - Phishing message detected";
     }
     else{
         resultType = "error";
-        icon = "error";
-        display = `error - ${data.result}`;
+        displayError(data.error);
     }
 
     // Update UI
@@ -78,8 +71,7 @@ function displayResult(data) { //displaying results
             
         resultText.innerHTML = `${icon} <strong>${display}</strong>`;
         resultDetails.innerHTML = `
-            <strong>Text Length:</strong> ${textInput.value.length} characters<br>
-            <strong>Raw Response:</strong> ${data.result}
+            <strong>Explanation:</strong>${explanation} <br>
             `;
             
 }
