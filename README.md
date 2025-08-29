@@ -9,7 +9,7 @@ A fine-tuned LLaMA 3.2 model using Unsloth.ai to detect phishing messages with a
 - **Training Library:** Unsloth.ai
 - **Precision:** 4-bit quantization
 - **LoRa adapters:** Enabled
-- **Output Format:** Binary classification - "Phishing email" or "Safe email"
+- **Output Format:** Classification - "Phishing email" or "Safe email" and Explanation - details from the message that indicate the message's classfication 
   
 ## Dataset
 - Original dataset Phishing_validation_emails.csv is from https://zenodo.org/records/13474746
