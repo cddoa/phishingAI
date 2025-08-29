@@ -12,13 +12,14 @@ A fine-tuned LLaMA 3.2 model using Unsloth.ai to detect phishing messages with a
 - **Output Format:** Binary classification - "Phishing email" or "Safe email"
   
 ## Dataset
-- Dataset Phishing_validation_emails.csv is from https://zenodo.org/records/13474746
-- Converted Phishing_validation_emails.csv to JSON format
-- Format: "input": raw message, "output": "Phishing" or "Safe"
-- Training Data: Labeled dataset consisting of both safe and phishing messages
+- Original dataset Phishing_validation_emails.csv is from https://zenodo.org/records/13474746
+- Converted Phishing_validation_emails.csv to JSON format and added explanations
+- Format: "input": raw message, "output": "Label: (phishing or safe) \n Explanation: (explanation of why the message is phishing or safe)"
+
   
 <img width="940" height="528" alt="image" src="https://github.com/user-attachments/assets/b2bf137c-30c5-4694-b735-f6740d049429" />
-
+  
+phishingAI's web UI
 
 ## Prerequisites
 - Python 3.8+
@@ -27,16 +28,17 @@ A fine-tuned LLaMA 3.2 model using Unsloth.ai to detect phishing messages with a
 
 ## Installing and Using Model Locally
 - Install the model here: https://huggingface.co/cddoan/phishingAI
-- After installing the model, the model file and Ollama run: ollama create phishingAI -f modelFile
+- After installing the model, the model file and Ollama navigate to the model's directory and run: ollama create phishingAI -f modelFile
 - Run web application using app.py and access through http://localhost:5000
 
 ## Testing 
-<img width="882" height="798" alt="image" src="https://github.com/user-attachments/assets/10ec0896-cdeb-414c-b32b-1b84509c93ec" />
+<img width="895" height="778" alt="image" src="https://github.com/user-attachments/assets/50f4857d-3e2d-4ebc-9265-373e43a7d2a4" />
   
-Dectection tested with sample phishing email.
+Dectection tested with sample phishing email. The model detected requests for personal information and the impersonation of an official institution to classify the message as phishing.
   
-<img width="846" height="780" alt="image" src="https://github.com/user-attachments/assets/d2cee0c3-b363-4d10-87c2-c6362ebbe71f" />
+#
+<img width="818" height="734" alt="image" src="https://github.com/user-attachments/assets/683092bc-c08b-4a5a-9ec9-d4c3bba64aaf" />
   
-Dectection tested with a real password reset email
+Dectection tested with a real password reset email. The model detected that the message was a legitimate service notification.
 
 
