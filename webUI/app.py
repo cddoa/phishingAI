@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 # initializing ollama client
 client = ollama.Client()
-model = "phishingAI"
+model = "phishingAIv2"
 
 
 # analyze user input and return model's response
@@ -22,15 +22,21 @@ def analyzeMessage(userInput):
         response = client.generate(model=model, 
                                 prompt=prompt,
                                     options={
-                                    "temperature": 0.7,
+                                    "temperature": 0.3,
                                     "top_p": 0.9,
-                                    "stop": ["<|endoftext|>", "###"],
+                                    "stop": ["."],
                                         }) 
 
         # return response
         result = response["response"].strip()
+        result = result.split("email")
+        classification = result[0]
+        explanation = result[1]
 
-        return {"result": result, "error": None}
+        print(f'classification: {classification}')
+        print(f'explanation:  {explanation}')
+
+        return {"classification": classification, "explanation": explanation , "error": None}
     
     except:
         return {"error": "Analysis failed"}
