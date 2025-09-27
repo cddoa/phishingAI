@@ -1,5 +1,5 @@
 # phishingAI - Phishing detection with LLaMA 3.2
-A fine-tuned LLaMA 3.2 model using Unsloth.ai to detect phishing messages with a Flask web interface.
+A fine-tuned LLaMA 3.2 model trained with Unsloth.ai to detect phishing messages through a Flask web application.
   
 
 
